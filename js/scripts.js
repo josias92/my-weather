@@ -1,22 +1,45 @@
+// First, load jQuery (required)
+// jQuery 2.2.2 loaded via `index.html`
+
+// Second, load Semantic UI JS (required)
+// @codekit-prepend "semantic.js";
+
+// Third, Add to Homescreen (optional)
+// @codekit-prepend "add-to-homescreen.js";
+
+// Third, load any plugins (optional)
+// @codekit-prepend "plugins.js";
+
 // My Scripts
 
-// Docs at http://simpleweatherjs.com
-$(function() {
-  $.simpleWeather({
-    location: 'Spokane, WA',
+// icons add class
+
+
+
+// Tabs Menu usage
+$('.menu .item').tab();
+
+// Get Cheney Weather
+$.simpleWeather({
+    location: '99004',
+    woeid: '',
     unit: 'f',
     success: function(weather) {
-    
-        $('.city').text(weather.city);
-        $('.temp').text(weather.temp);
-        $('.cond-code').text(weather.code);
-        $('.icon img').attr('src', weather.image);
-        // console.log(weather);
-    
+      
+      // Display Data
+      $('#cheney .city').text(weather.city);
+      $('#cheney .temp').text(weather.temp);
+      $('#cheney i').addClass( 'icon-' + weather.code );
+        
+      // Entire weather object
+      console.log(weather);
     },
     error: function(error) {
-      console.log("Error No Weather");
-    
+      // Show if weather cannot be retreived
     }
+  
   });
-});
+
+
+
+
